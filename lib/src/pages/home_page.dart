@@ -9,9 +9,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(''),
       ),
-      body: Center(
-        child: Container(),
-      ),
+      body: Container(),
     );
   }
 }
