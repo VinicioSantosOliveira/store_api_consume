@@ -4,13 +4,10 @@ import 'package:store_api_consume/src/models/product_model.dart';
 class ProductService {
   final dio = Dio();
 
-  Future getProduct() async {
-    ProductModel productModel;
-
+  Future<ProductModel> getProduct() async {
     final response = await dio.get('https://dummyjson.com/products');
+    final product = ProductModel.fromJson(response.data);
 
-    productModel = ProductModel.fromJson(response.data);
-
-    return productModel;
+    return product;
   }
 }

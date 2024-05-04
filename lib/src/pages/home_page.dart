@@ -3,15 +3,10 @@ import 'package:get/get.dart';
 import 'package:store_api_consume/src/controller/home_controller.dart';
 import 'package:store_api_consume/src/models/product_model.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePage extends StatelessWidget {
+  HomePage({super.key});
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  final homeController = HomeController();
+  final homeController = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +18,7 @@ class _HomePageState extends State<HomePage> {
             color: const Color.fromARGB(255, 255, 17, 0),
             shadows: [
               BoxShadow(
-                color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.5),
+                color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.7),
                 spreadRadius: 5,
                 blurRadius: 7,
                 offset: const Offset(-3, 1),
@@ -36,19 +31,19 @@ class _HomePageState extends State<HomePage> {
       ),
       body: homeController.obx(
         (state) {
-          final List<ProductModel> product = state;
+          final ProductModel product = state;
 
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Container(
               height: 500,
-              width: double.infinity,
+              width: 300,
               child: ListView.builder(
-                itemCount: product.length,
+                itemCount: product.products.length,
                 itemBuilder: (_, index) {
-                  final productOnly = product[index];
+                  final productOnly = product.products[index];
 
-                  return Text(productOnly.products.first.title);
+                  return Text(productOnly.title);
                 },
               ),
             ),

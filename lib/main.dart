@@ -1,23 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store_api_consume/src/pages/home_page.dart';
+import 'package:store_api_consume/src/widgets/my_app_widget.dart';
 
 void main() {
   runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-       
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HomePage(),
-    );
-  }
 }
