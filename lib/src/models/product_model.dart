@@ -1,7 +1,7 @@
 import 'package:store_api_consume/src/models/products_model.dart';
 
 class ProductModel {
-  List<ProductsModel> products;
+  final List<ProductsModel> products;
   final int total;
   final int skip;
   final int limit;
