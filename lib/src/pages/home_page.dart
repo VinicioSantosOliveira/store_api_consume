@@ -44,25 +44,72 @@ class HomePage extends StatelessWidget {
                   final productOnly = product.products[index];
 
                   return Padding(
-                    padding: const EdgeInsets.all(4.0),
+                    padding: const EdgeInsets.only(top: 10),
                     child: Container(
                       height: 300,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.grey[500],
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       child: Column(
                         children: [
-                          Text(
-                            productOnly.title,
-                            style: const TextStyle(fontSize: 16),
+                          Stack(
+                            children: [
+                              Center(
+                                child: SizedBox(
+                                  width: 200,
+                                  child: Center(
+                                    child: Text(
+                                      productOnly.title,
+                                      style: const TextStyle(
+                                        fontSize: 18,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 290),
+                                child: Center(
+                                  child: Text(
+                                    '\$${productOnly.price}',
+                                    style: const TextStyle(
+                                      color: Colors.redAccent,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                           Image.network(
                             productOnly.thumbnail,
                             height: 170,
                             width: 200,
                             fit: BoxFit.fill,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 10,
+                              left: 10,
+                              right: 10,
+                            ),
+                            child: Container(
+                              height: 80,
+                              width: 340,
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(5),
+                                ),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Text(productOnly.description),
+                              ),
+                            ),
                           ),
                         ],
                       ),
