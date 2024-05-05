@@ -34,16 +34,40 @@ class HomePage extends StatelessWidget {
           final ProductModel product = state;
 
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Container(
-              height: 500,
-              width: 300,
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: double.infinity,
               child: ListView.builder(
                 itemCount: product.products.length,
                 itemBuilder: (_, index) {
                   final productOnly = product.products[index];
 
-                  return Text(productOnly.title);
+                  return Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Container(
+                      height: 300,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Column(
+                        children: [
+                          Text(
+                            productOnly.title,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                          Image.network(
+                            productOnly.thumbnail,
+                            height: 170,
+                            width: 200,
+                            fit: BoxFit.fill,
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
                 },
               ),
             ),
